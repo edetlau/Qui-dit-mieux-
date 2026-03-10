@@ -1,0 +1,862 @@
+[
+  {
+    "id": "1",
+    "theme": "force",
+    "statement": "Combien de chamallow peux tu mettre dans ta bouche avant de dire la phrase \"Je suis ravi d'être ici\" ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Chamallows",
+    "enabled": true
+  },
+  {
+    "id": "2",
+    "theme": "force",
+    "statement": "Combien de temps peux-tu tenir un pack à bout de bras ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Pack d'eau",
+    "enabled": true
+  },
+  {
+    "id": "3",
+    "theme": "force",
+    "statement": "Combien de temps peux-tu tenir sur un pied les yeux fermés ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "4",
+    "theme": "force",
+    "statement": "Combien de pompes peux-tu réaliser ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "5",
+    "theme": "force",
+    "statement": "Combien de secondes peux-tu tenir en position de gainage sur les coudes ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "6",
+    "theme": "force",
+    "statement": "Combien de temps peux-tu tenir en position chaise contre un mur ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "7",
+    "theme": "force",
+    "statement": "Combien de chaises peux-tu déplacer en une seule fois sans les empiler ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "8",
+    "theme": "force",
+    "statement": "Combien de temps peux-tu tenir en équilibre sur les mains ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "9",
+    "theme": "force",
+    "statement": "Combien de verre peux-tu tenir avec une seule main ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Verres",
+    "enabled": true
+  },
+  {
+    "id": "10",
+    "theme": "force",
+    "statement": "Combien de temps une pièce peut-elle rester collée sur ton front ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Pièces",
+    "enabled": true
+  },
+  {
+    "id": "11",
+    "theme": "force",
+    "statement": "Combien d’objets peux-tu attraper d’une seule main sans en faire tomber ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "12",
+    "theme": "force",
+    "statement": "Combien d’objets peux-tu transporter sans utiliser tes mains ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "13",
+    "theme": "force",
+    "statement": "Combien de jumping jack peux-tu faire en 20 secondes ?",
+    "type": "timer",
+    "time": 20,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "14",
+    "theme": "force",
+    "statement": "Les mains jointes, combien de fois en 60 secondes peux-tu faire passer tes mains devant puis derrière ton corps sans les lâcher ?",
+    "type": "timer",
+    "time": 60,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "15",
+    "theme": "force",
+    "statement": "Combien de fois peux-tu taper dans tes mains sous une jambe levée puis l'autre en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "16",
+    "theme": "force",
+    "statement": "En étant allongé sur le ventre, en combien de temps peux-tu te relever sans les mains ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "17",
+    "theme": "force",
+    "statement": "Combien de fois peux-tu soulever un autre joueur (décoller ses pieds du sol) en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "18",
+    "theme": "force",
+    "statement": "Combien de montées de genoux (hauteur de hanche) peux-tu faire en 20 secondes ?",
+    "type": "timer",
+    "time": 20,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "19",
+    "theme": "force",
+    "statement": "En combien de temps peux-tu faire 100 pas (en comptant chaque contact au sol) ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "20",
+    "theme": "force",
+    "statement": "Combien de tours complets sur toi-même peux-tu faire en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "21",
+    "theme": "force",
+    "statement": "Quelle distance (en nombre de tes propres pieds) penses-tu pouvoir franchir en un saut sans élan ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "22",
+    "theme": "force",
+    "statement": "Combien de temps peux-tu garder en équilibre un balai dans le creux de ta main grande ouverte ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Balai",
+    "enabled": true
+  },
+  {
+    "id": "23",
+    "theme": "force",
+    "statement": "En allongeant un verre dans ta main, combien de temps prendrais-tu pour lui faire faire 5 tours complets ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Verres",
+    "enabled": true
+  },
+  {
+    "id": "24",
+    "theme": "force",
+    "statement": "Combien d'objets peux-tu prendre sur la table et poser sur le sol en utilisant uniquement tes pieds en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "25",
+    "theme": "reflexes",
+    "statement": "Combien de temps peux tu rester sans cligner des yeux ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "26",
+    "theme": "reflexes",
+    "statement": "Combien de temps peux-tu dire \"AHHHHHHH\" la bouche grande ouverte sans interruption ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "27",
+    "theme": "reflexes",
+    "statement": "Combien de cartes peux-tu retourner une par une en 15 secondes ?",
+    "type": "timer",
+    "time": 15,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "28",
+    "theme": "reflexes",
+    "statement": "Combien de temps peux-tu maintenir une feuille de papier contre un mur uniquement en soufflant dessus ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Feuille de papier",
+    "enabled": true
+  },
+  {
+    "id": "29",
+    "theme": "reflexes",
+    "statement": "Fais tourner une pièce sur la table. Combien de secondes penses-tu pouvoir la faire tourner avant de tomber ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Pièces",
+    "enabled": true
+  },
+  {
+    "id": "30",
+    "theme": "reflexes",
+    "statement": "En combien de secondes peux-tu réciter l'alphabet en commençant par Z ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "31",
+    "theme": "reflexes",
+    "statement": "Combien de sauts à cloche-pied peux-tu faire en 20 secondes ?",
+    "type": "timer",
+    "time": 20,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "32",
+    "theme": "reflexes",
+    "statement": "Combien de secondes peux-tu faire tenir un stylo en équilibre vertical sur le bout de ton index ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": "Stylo",
+    "enabled": true
+  },
+  {
+    "id": "33",
+    "theme": "reflexes",
+    "statement": "Combien de fois peux-tu faire passer un objet (balle, téléphone) sous ta jambe levée en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "34",
+    "theme": "reflexes",
+    "statement": "À quelle distance (en cm) penses-tu pouvoir éteindre une bougie ou un briquet d'un seul souffle ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Bougie",
+    "enabled": true
+  },
+  {
+    "id": "35",
+    "theme": "reflexes",
+    "statement": "En regardant pendant 10 secondes les décimales de pi, combien peux-tu en mémoriser et restituer dans l'ordre ?",
+    "type": "timer",
+    "time": 10,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "36",
+    "theme": "reflexes",
+    "statement": "Mélange un paquet de cartes. Combien de cartes peux-tu séparer par couleur (Rouge/Noir) en 10 secondes ?",
+    "type": "timer",
+    "time": 10,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "37",
+    "theme": "reflexes",
+    "statement": "Combien de lignes d'un livre peux-tu lire à haute voix en 15 secondes ?",
+    "type": "timer",
+    "time": 15,
+    "needObject": "Livre",
+    "enabled": true
+  },
+  {
+    "id": "38",
+    "theme": "reflexes",
+    "statement": "A combien de personne peux-tu partager cette application en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "39",
+    "theme": "reflexes",
+    "statement": "En combien d'essai peux-tu faire un bottle flip ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Bouteille plastique",
+    "enabled": true
+  },
+  {
+    "id": "40",
+    "theme": "reflexes",
+    "statement": "On te demande d'arrêter le chrono à 5.00 secondes. Quelle sera ta marge d'erreur (en centièmes) ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "41",
+    "theme": "reflexes",
+    "statement": "Fais glisser un objet. A combien de cm du bord de la table penses-tu pouvoir aller (si ça tombe c'est perdu !) ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "42",
+    "theme": "reflexes",
+    "statement": "Combien de grains de riz (ou petites pâtes) peux-tu transférer d'un bol à l'autre avec deux stylos (en guise de baguettes) en 45 secondes ?",
+    "type": "timer",
+    "time": 45,
+    "needObject": "Pâtes ou riz",
+    "enabled": true
+  },
+  {
+    "id": "43",
+    "theme": "reflexes",
+    "statement": "Combien de tours de la table peux-tu faire en marchant à reculons sans regarder derrière et sans rien toucher ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "44",
+    "theme": "reflexes",
+    "statement": "LIMBO : Sous quelle hauteur d'obstacle (en cm) penses-tu pouvoir passer sans toucher le sol avec tes mains ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "45",
+    "theme": "reflexes",
+    "statement": "Combien de fois peux-tu jongler avec un ballon (ou un coussin) avec tes pieds sans qu'il touche le sol ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Ballon ou coussin",
+    "enabled": true
+  },
+  {
+    "id": "46",
+    "theme": "reflexes",
+    "statement": "Combien de millilitres d'eau peux-tu transférer d'un verre à l'autre en utilisant uniquement une petite cuillère en 1 minute ?",
+    "type": "timer",
+    "time": 60,
+    "needObject": "Verres",
+    "enabled": true
+  },
+  {
+    "id": "47",
+    "theme": "reflexes",
+    "statement": "En combien de temps peux-tu faire un nœud sur un lacet en utilisant une seule main ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Chaussure à lacets",
+    "enabled": true
+  },
+  {
+    "id": "48",
+    "theme": "reflexes",
+    "statement": "En combien de temps peux-tu faire fondre un glaçon juste avec ton corps ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "49",
+    "theme": "culture",
+    "statement": "Combien d'applications mobiles peux tu citer en 45 secondes ?",
+    "type": "timer",
+    "time": 45,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "50",
+    "theme": "culture",
+    "statement": "Combien de mots peux-tu trouver commençant par une lettre donnée ?",
+    "type": "hiddenInfo",
+    "time": 30,
+    "hiddenInfo": "RANDOM_LETTER",
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "51",
+    "theme": "culture",
+    "statement": "Combien de fois peux-tu dire une phrase compliquée sans te tromper ?",
+    "type": "hiddenInfo",
+    "time": null,
+    "hiddenInfo": "Suis-je bien chez ce cher Serge ?",
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "52",
+    "theme": "culture",
+    "statement": "Combien de capitales peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "53",
+    "theme": "culture",
+    "statement": "En combien de temps penses-tu épeller cette phrase à l'envers (lettre par lettre) ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "54",
+    "theme": "culture",
+    "statement": "Combien de mots peux-tu trouver sans utiliser une lettre donnée ?",
+    "type": "hiddenInfo",
+    "time": 45,
+    "hiddenInfo": "RANDOM_LETTER",
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "55",
+    "theme": "culture",
+    "statement": "En combien de langues peux-tu dire bonjour ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "56",
+    "theme": "culture",
+    "statement": "Combien de façons peux-tu dire “oui” sans dire “oui” en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "57",
+    "theme": "culture",
+    "statement": "Combien de chansons célèbres peux-tu fredonner (sans les paroles) et faire deviner en 60 secondes ?",
+    "type": "timer",
+    "time": 60,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "58",
+    "theme": "culture",
+    "statement": "Combien de prénoms commençant par \"L\" peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "59",
+    "theme": "culture",
+    "statement": "Combien de séries Netflix peux-tu citer en 45 secondes ?",
+    "type": "timer",
+    "time": 45,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "60",
+    "theme": "culture",
+    "statement": "Combien de villes françaises peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "61",
+    "theme": "culture",
+    "statement": "Combien de mots de exactement 3 lettres peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "62",
+    "theme": "culture",
+    "statement": "Combien de Pokémons peux-tu citer (pour les connaisseurs) en 45 secondes?",
+    "type": "timer",
+    "time": 45,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "63",
+    "theme": "culture",
+    "statement": "Combien de numéros de départements (avec leur nom) peux-tu citer en 45 secondes ?",
+    "type": "timer",
+    "time": 45,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "64",
+    "theme": "culture",
+    "statement": "En lançant une playlist \"Hits du moment\", combien de titres peux-tu reconnaitre en 60 secondes ?",
+    "type": "timer",
+    "time": 60,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "65",
+    "theme": "culture",
+    "statement": "Combien d'acteurs peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "66",
+    "theme": "culture",
+    "statement": "Combien d'animaux peux-tu nommer en 20 secondes ?",
+    "type": "timer",
+    "time": 20,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "67",
+    "theme": "culture",
+    "statement": "Combien de créateurs de contenu (Youtube, Tiktok, Twitch) peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "68",
+    "theme": "culture",
+    "statement": "Combien de matières scolaire (niveau Lycée) peux-tu citer en 20 secondes ?",
+    "type": "timer",
+    "time": 20,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "69",
+    "theme": "culture",
+    "statement": "Combien de fruits rouges peux-tu citer en 15 secondes ?",
+    "type": "timer",
+    "time": 15,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "70",
+    "theme": "culture",
+    "statement": "Combien de marques de vêtements peux-tu citer en regardant les vêtements des joueurs autour de toi sans te tromper ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "71",
+    "theme": "culture",
+    "statement": "Combien de styles de danse peux-tu citer en 30 secondes ?",
+    "type": "timer",
+    "time": 30,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "72",
+    "theme": "culture",
+    "statement": "Combien de dessins animés peux-tu donner en 45 secondes ?",
+    "type": "timer",
+    "time": 45,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "73",
+    "theme": "chance",
+    "statement": "Dans un jeu de cartes avec toutes les cartes noires et seulement 3 rouges, combien de cartes penses-tu tirer avant une rouge ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "74",
+    "theme": "chance",
+    "statement": "En combien d’essais penses-tu deviner un nombre entre 1 et 20 ?",
+    "type": "hiddenInfo",
+    "time": null,
+    "hiddenInfo": "RANDOM_NUMBER",
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "75",
+    "theme": "chance",
+    "statement": "Choisis pile ou face 10 fois d’affilée : combien de bons choix penses-tu faire ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Pièces",
+    "enabled": true
+  },
+  {
+    "id": "76",
+    "theme": "chance",
+    "statement": "Tire une carte au hasard : rouge ou noire ? Combien de bonnes prédictions d’affilée penses-tu faire ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "77",
+    "theme": "chance",
+    "statement": "Combien de fois penses-tu pouvoir lancer un dé sans jamais faire un \"6\" ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Dés",
+    "enabled": true
+  },
+  {
+    "id": "78",
+    "theme": "chance",
+    "statement": "On tire deux cartes d'un paquet. Combien de fois d'affilée penses-tu que ta carte tirée sera supérieure à celle du voisin ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "79",
+    "theme": "chance",
+    "statement": "Ouvre un livre sur une page aléatoire. Combien de fois penses-tu tomber sur la lettre cachée ?",
+    "type": "hiddenInfo",
+    "time": null,
+    "hiddenInfo": "RANDOM_LETTER",
+    "needObject": "Livre",
+    "enabled": true
+  },
+  {
+    "id": "80",
+    "theme": "chance",
+    "statement": "Combien de manches de Chifoumi (Pierre-Feuille-Ciseaux) penses-tu gagner d'affilée contre ton voisin de droite ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "81",
+    "theme": "chance",
+    "statement": "Tire des cartes une par une. Combien de cartes penses-tu pouvoir tirer sans dépasser le total de 50 (Roi, Dame, Valet = 10) ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "82",
+    "theme": "chance",
+    "statement": "On tire deux cartes (ex: un 3 et un 9). Combien de cartes penses-tu pouvoir tirer avant d'en trouver une qui soit comprise entre les deux ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "83",
+    "theme": "chance",
+    "statement": "Toi et le joueur en face dites un mot au hasard au signal. En combien d'essais allez-vous dire le même ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "84",
+    "theme": "chance",
+    "statement": "Un joueur cache un petit objet dans une de ses deux mains derrière son dos. Combien de fois vas-tu trouver la bonne main d'affilée ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "85",
+    "theme": "chance",
+    "statement": "En ouvrant un livre au hasard, à combien de pages près penses-tu tomber sur la page 100 ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Livre",
+    "enabled": true
+  },
+  {
+    "id": "86",
+    "theme": "chance",
+    "statement": "Mets ta musique en mode aléatoire. Combien de chansons penses-tu pouvoir passer avant de tomber sur une chanson chantée par une femme ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "87",
+    "theme": "chance",
+    "statement": "En lançant deux dés, en combien de lancers penses-tu obtenir un double (ex: deux \"4\") ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Dés",
+    "enabled": true
+  },
+  {
+    "id": "88",
+    "theme": "chance",
+    "statement": "Combien de cartes penses-tu retourner avant de tomber sur un 8 ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "89",
+    "theme": "chance",
+    "statement": "Combien de figures (Valet, Dame, Roi) penses-tu tirer sur 20 cartes piochées ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Jeu de cartes",
+    "enabled": true
+  },
+  {
+    "id": "90",
+    "theme": "chance",
+    "statement": "Combien de cartes penses-tu retourner avant de former une paire (deux cartes de même valeur, ex: deux 8) ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "91",
+    "theme": "chance",
+    "statement": "Le joueur en face choisit une appli sur ton téléphone. En combien de questions (auxquelles on répond par oui/non) penses-tu la trouver ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "92",
+    "theme": "chance",
+    "statement": "Un joueur cache un briquet (ou objet petit) dans la pièce. En combien de secondes penses-tu le trouver ?",
+    "type": "chrono",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  },
+  {
+    "id": "93",
+    "theme": "chance",
+    "statement": "On te demande de verser 150g d'eau dans un verre. À combien de grammes près penses-tu être du poids demandé ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Balance",
+    "enabled": true
+  },
+  {
+    "id": "94",
+    "theme": "chance",
+    "statement": "Lance une capsule de bière. Combien de fois peux-tu la faire retomber du côté creux ?",
+    "type": "none",
+    "time": null,
+    "needObject": "Capsule de bière",
+    "enabled": true
+  },
+  {
+    "id": "95",
+    "theme": "chance",
+    "statement": "À combien de % près penses-tu deviner la somme des batteries de tous les joueurs ?",
+    "type": "none",
+    "time": null,
+    "needObject": null,
+    "enabled": true
+  }
+]

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qui dit mieux ? — Jeu de défis fun entre amis : enchères, défis et fous rires garantis ! Disponible sur Google Play." />
+  <title>Qui dit mieux ? — Le jeu de défis entre amis</title>
+  <link rel="icon" href="assets/logo-removebg.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #231936;
+      --card:     #1C1A29;
+      --accent:   #FF3D00;
+      --primary:  #55FF00;
+      --grad-a:   #000000;
+      --grad-b:   #3533CD;
+      --text:     #FFFFFF;
+      --muted:    rgba(255,255,255,0.55);
+      --border:   rgba(255,255,255,0.10);
+      --font-display: 'Bebas Neue', 'Impact', sans-serif;
+      --font-body:    'Nunito', sans-serif;
+      --r: 18px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 0;
+      background: var(--primary); color: #000;
+      padding: 10px 20px; font-weight: 700; z-index: 9999;
+      text-decoration: none; transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── Focus ── */
+    :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* ── Noise overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .5;
+    }
+
+    /* ── WRAPPER ── */
+    .wrapper { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 36px; width: 36px; object-fit: contain;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: .05em;
+      color: var(--primary);
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 13px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-cta {
+      background: var(--primary); color: #000;
+      border: none; border-radius: var(--r);
+      padding: 8px 22px; font-family: var(--font-body);
+      font-size: 13px; font-weight: 900; cursor: pointer;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+      display: inline-block;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(85,255,0,.35); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Glow orbs */
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(85,255,0,.12) 0%, transparent 65%);
+      pointer-events: none; animation: orb1 8s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -200px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,61,0,.15) 0%, transparent 65%);
+      pointer-events: none; animation: orb2 10s ease-in-out infinite alternate;
+    }
+    @keyframes orb1 { to { transform: translate(80px, 60px); } }
+    @keyframes orb2 { to { transform: translate(-60px, -80px); } }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      max-width: 1100px; width: 100%;
+      position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--primary);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 2px; background: var(--primary);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 8vw, 110px);
+      line-height: .92; letter-spacing: .02em;
+      color: var(--text);
+      text-shadow: 0 0 60px rgba(85,255,0,.2);
+    }
+    h1 .accent-word { color: var(--primary); }
+
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 17px; color: var(--muted); line-height: 1.7;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--primary); color: #000;
+      border-radius: var(--r); padding: 14px 28px;
+      font-family: var(--font-body); font-size: 16px; font-weight: 900;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(85,255,0,.4);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.3); border-radius: var(--r);
+      padding: 14px 28px; font-size: 16px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    .hero-badges {
+      margin-top: 40px;
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--muted); font-weight: 600;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Phone mockup */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .phone-frame {
+      width: 260px;
+      background: #0a0a0a;
+      border-radius: 40px;
+      border: 6px solid #2a2a2a;
+      box-shadow:
+        0 0 0 1px #111,
+        0 40px 80px rgba(0,0,0,.8),
+        0 0 80px rgba(85,255,0,.15),
+        inset 0 0 40px rgba(255,255,255,.02);
+      overflow: hidden;
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-16px); }
+    }
+    .phone-screen {
+      width: 100%; aspect-ratio: 9/19;
+      background: linear-gradient(135deg, #000 0%, #3533CD 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      padding: 2px;
+    }
+    .phone-screen img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 0;
+    }
+    /* Glow ring around phone */
+    .phone-glow {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85,255,0,.12) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+
+    /* Floating tag */
+    .phone-tag {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12px; font-weight: 700;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      animation: float 4s ease-in-out infinite;
+    }
+    .phone-tag.left {
+      left: -80px; top: 30%;
+      animation-delay: -1s;
+      color: var(--primary);
+      border-color: rgba(85,255,0,.3);
+    }
+    .phone-tag.right {
+      right: -70px; top: 55%;
+      animation-delay: -2s;
+      color: var(--accent);
+      border-color: rgba(255,61,0,.3);
+    }
+
+    /* ── SECTION GÉNÉRIQUE ── */
+    section {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--primary);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; width: 24px; height: 2px; background: var(--primary);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: .95; letter-spacing: .02em;
+      margin-bottom: 48px;
+    }
+
+    /* ── CONCEPT ── */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .concept-card {
+      background: rgba(28,26,41,.7);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px 24px;
+      backdrop-filter: blur(12px);
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .concept-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(85,255,0,.1);
+    }
+    .concept-icon {
+      font-size: 36px; margin-bottom: 14px;
+    }
+    .concept-card h3 {
+      font-family: var(--font-display);
+      font-size: 26px; letter-spacing: .03em;
+      color: var(--primary); margin-bottom: 10px;
+    }
+    .concept-card p {
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── CHALLENGE TYPES ── */
+    .challenge-types {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .challenge-chip {
+      padding: 8px 20px; border-radius: 999px;
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .chip-force   { background: rgba(255,82,82,.15); color: #FF5252; border: 1px solid rgba(255,82,82,.3); }
+    .chip-reflexe { background: rgba(255,235,59,.15); color: #FFEB3B; border: 1px solid rgba(255,235,59,.3); }
+    .chip-culture { background: rgba(33,150,243,.15); color: #90CAF9; border: 1px solid rgba(33,150,243,.3); }
+    .chip-chance  { background: rgba(85,255,0,.15);   color: var(--primary); border: 1px solid rgba(85,255,0,.3); }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots-section {
+      padding: 100px 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .screenshots-header {
+      max-width: 1100px; margin: 0 auto; padding: 0 40px 48px;
+    }
+    .screenshots-scroll {
+      display: flex; gap: 20px;
+      padding: 20px 40px 40px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+    .screenshots-scroll::-webkit-scrollbar { height: 4px; }
+    .screenshots-scroll::-webkit-scrollbar-thumb {
+      background: var(--primary); border-radius: 2px;
+    }
+    .screenshot-item {
+      flex-shrink: 0; scroll-snap-align: start;
+      width: 200px;
+      background: #0a0a0a;
+      border-radius: 28px;
+      border: 4px solid #222;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0,0,0,.6);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .screenshot-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 32px 64px rgba(85,255,0,.15);
+    }
+    .screenshot-item img {
+      width: 100%; display: block;
+      aspect-ratio: 9/19; object-fit: cover;
+    }
+    /* Placeholder quand l'image n'est pas encore fournie */
+    .screenshot-placeholder {
+      width: 100%; aspect-ratio: 9/19;
+      background: linear-gradient(135deg, #000 0%, #3533CD 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+      color: var(--muted); font-size: 12px; text-align: center;
+      padding: 12px;
+    }
+    .screenshot-placeholder .ph-icon { font-size: 32px; }
+
+    /* ── CAROUSEL RÈGLES ── */
+    .carousel-section {
+      padding: 100px 40px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .carousel-wrap {
+      position: relative;
+    }
+    .carousel-track-outer {
+      overflow: hidden; border-radius: var(--r);
+    }
+    .carousel-track {
+      display: flex; transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .carousel-slide {
+      flex-shrink: 0; width: 100%;
+      display: flex; justify-content: center;
+    }
+    .carousel-slide img {
+      max-height: 520px; max-width: 100%;
+      object-fit: contain; border-radius: var(--r);
+      box-shadow: 0 24px 64px rgba(0,0,0,.6);
+    }
+    /* Placeholder règle */
+    .rule-placeholder {
+      width: 320px; aspect-ratio: 3/4;
+      background: rgba(28,26,41,.8);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      color: var(--muted); font-size: 14px;
+    }
+
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(0,0,0,.6); border: 2px solid var(--border);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+    .carousel-btn:hover { background: var(--primary); border-color: var(--primary); color: #000; }
+    .carousel-btn.prev { left: -24px; }
+    .carousel-btn.next { right: -24px; }
+
+    .carousel-dots {
+      display: flex; justify-content: center; gap: 8px;
+      margin-top: 24px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border); border: none; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .dot.active { background: var(--primary); transform: scale(1.3); }
+
+    /* ── MODES DE JEU ── */
+    .modes-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+    .mode-card {
+      background: rgba(28,26,41,.6);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 32px 24px;
+      position: relative; overflow: hidden;
+      transition: border-color .25s, transform .25s;
+    }
+    .mode-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .mode-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .mode-num {
+      font-family: var(--font-display);
+      font-size: 72px; color: rgba(255,61,0,.12);
+      position: absolute; top: 12px; right: 16px;
+      line-height: 1;
+    }
+    .mode-icon { font-size: 32px; margin-bottom: 14px; }
+    .mode-card h3 {
+      font-family: var(--font-display);
+      font-size: 28px; color: var(--accent); margin-bottom: 10px;
+    }
+    .mode-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    .feature-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: rgba(28,26,41,.5);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px;
+      transition: border-color .2s;
+    }
+    .feature-item:hover { border-color: rgba(85,255,0,.3); }
+    .feature-icon {
+      font-size: 24px; flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: rgba(85,255,0,.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .feature-item h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .feature-item p { font-size: 13px; color: var(--muted); }
+
+    /* ── AUDIENCE ── */
+    .audience-list {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      list-style: none; margin-bottom: 48px;
+    }
+    .audience-item {
+      background: rgba(28,26,41,.7);
+      border: 1px solid var(--border);
+      border-radius: 999px; padding: 10px 22px;
+      font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── CTA DOWNLOAD ── */
+    .cta-section {
+      padding: 100px 40px;
+      max-width: 1100px; margin: 0 auto;
+      text-align: center;
+    }
+    .cta-box {
+      background: rgba(28,26,41,.7);
+      border: 1px solid var(--border);
+      border-radius: 32px; padding: 72px 48px;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(85,255,0,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-box h2 {
+      font-size: clamp(40px, 5vw, 80px);
+      margin-bottom: 20px;
+    }
+    .cta-box p { color: var(--muted); font-size: 18px; margin-bottom: 40px; }
+
+    .playstore-btn {
+      display: inline-block;
+      transition: transform .2s, filter .2s;
+    }
+    .playstore-btn:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 8px 24px rgba(85,255,0,.3));
+    }
+    .playstore-btn img {
+      height: 64px; display: block;
+    }
+    /* Placeholder badge */
+    .playstore-badge {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: #000; border: 2px solid rgba(255,255,255,.15);
+      border-radius: 14px; padding: 12px 24px;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+    }
+    .playstore-badge:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(85,255,0,.25);
+    }
+    .playstore-icon { font-size: 36px; }
+    .playstore-text-wrap { text-align: left; }
+    .playstore-sub { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .playstore-name { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.1; }
+
+    /* ── SOCIALS ── */
+    .socials-section {
+      padding: 60px 40px;
+      max-width: 1100px; margin: 0 auto;
+      text-align: center;
+    }
+    .socials-title {
+      font-size: 13px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 24px;
+    }
+    .socials-list {
+      display: flex; justify-content: center; gap: 16px;
+      list-style: none; flex-wrap: wrap;
+    }
+    .social-link {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(28,26,41,.7);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 12px 22px;
+      text-decoration: none; color: var(--text);
+      font-size: 14px; font-weight: 700;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .social-link:hover {
+      border-color: var(--primary); transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(85,255,0,.12);
+    }
+    .social-icon { 
+        font-size: 22px;
+        max-width: 50px;
+        height: 35px;
+     }
+
+    /* ── PRIVACY ── */
+    .privacy-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 40px 40px;
+      text-align: center;
+    }
+    .privacy-link {
+      color: var(--muted); text-decoration: underline;
+      text-underline-offset: 3px; font-size: 13px;
+      transition: color .2s;
+    }
+    .privacy-link:hover { color: var(--primary); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,.5);
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: var(--muted);
+      flex-wrap: wrap; gap: 16px;
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+    footer a:hover { color: var(--primary); }
+
+    /* ── ANIMATIONS ENTRÉE ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-visual { order: -1; }
+      .phone-tag { display: none; }
+      .hero-actions { justify-content: center; }
+      .hero-badges { justify-content: center; }
+      section { padding: 64px 20px; }
+      .concept-grid { grid-template-columns: 1fr; }
+      .modes-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .cta-box { padding: 48px 24px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Navigation principale">
+    <a href="#" class="nav-logo" aria-label="Qui dit mieux ? — Accueil">
+      <img src="assets/logo-removebg.png" alt="" aria-hidden="true" onerror="this.style.display='none'" />
+      <span class="nav-logo-text">Qui dit mieux ?</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#captures">Captures</a></li>
+      <li><a href="#regles">Règles</a></li>
+      <li><a href="#modes">Modes</a></li>
+    </ul>
+    <a href="https://play.google.com/store/apps/details?id=com.edetlau.qui_dit_mieux"
+       class="nav-cta"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Télécharger sur Google Play (nouvelle fenêtre)">
+      Télécharger
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="contenu" class="hero" role="banner">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-eyebrow" aria-hidden="true">Jeu de défis entre amis</p>
+        <h1>
+          <span class="accent-word">Qui</span><br>
+          dit<br>
+          mieux ?
+        </h1>
+        <p class="hero-sub">
+          Enchérissez, relevez des défis et accumulez des points…
+          mais attention à ne pas vous surestimer !
+        </p>
+        <div class="hero-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.edetlau.qui_dit_mieux"
+             class="btn-primary"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Télécharger Qui dit mieux ? sur Google Play (nouvelle fenêtre)">
+            <span aria-hidden="true">▶</span> Télécharger gratuitement
+          </a>
+          <a href="#concept" class="btn-outline">
+            Découvrir le jeu
+          </a>
+        </div>
+        <div class="hero-badges" role="list" aria-label="Caractéristiques">
+          <div class="hero-badge" role="listitem">
+            <span class="hero-badge-dot" style="background:var(--primary)" aria-hidden="true"></span>
+            Gratuit
+          </div>
+          <div class="hero-badge" role="listitem">
+            <span class="hero-badge-dot" style="background:var(--accent)" aria-hidden="true"></span>
+            Hors ligne
+          </div>
+          <div class="hero-badge" role="listitem">
+            <span class="hero-badge-dot" style="background:#90CAF9" aria-hidden="true"></span>
+            2 joueurs et plus
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone-glow"></div>
+        <div class="phone-tag left">⚡ Défis</div>
+        <div class="phone-tag right">🔥 Enchères</div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <!-- Remplacer par une vraie capture d'écran : -->
+            <img src="assets/screenshots/screen3.jpg"
+                 alt=""
+                 onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>🎮</span><span>Qui dit mieux ?</span></div>'" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONCEPT -->
+  <section id="concept" aria-labelledby="titre-concept">
+    <p class="section-label" aria-hidden="true">Le concept</p>
+    <h2 id="titre-concept">🎯 Comment<br>ça marche ?</h2>
+    <div class="concept-grid" role="list">
+      <div class="concept-card fade-up" role="listitem">
+        <div class="concept-icon" aria-hidden="true">🃏</div>
+        <h3>1. Le défi</h3>
+        <p>À chaque tour, un défi apparaît : force, réflexes, culture ou chance. Tout le monde peut participer !</p>
+      </div>
+      <div class="concept-card fade-up" role="listitem" style="transition-delay:.1s">
+        <div class="concept-icon" aria-hidden="true">💰</div>
+        <h3>2. L'enchère</h3>
+        <p>Les joueurs enchérissent sur leur capacité à réussir le défi. Bluffez et surprenez vos adversaires !</p>
+      </div>
+      <div class="concept-card fade-up" role="listitem" style="transition-delay:.2s">
+        <div class="concept-icon" aria-hidden="true">🏆</div>
+        <h3>3. Le résultat</h3>
+        <p>Réussi ? Vous gagnez des points. Échoué ? Les autres joueurs en profitent ! Stratégie et bonne humeur.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <p class="section-label" aria-label="Types de défis disponibles">Types de défis</p>
+      <div class="challenge-types" role="list" aria-label="Catégories de défis">
+        <span class="challenge-chip chip-force" role="listitem">💪 Force</span>
+        <span class="challenge-chip chip-reflexe" role="listitem">⚡ Réflexes</span>
+        <span class="challenge-chip chip-culture" role="listitem">📚 Culture</span>
+        <span class="challenge-chip chip-chance" role="listitem">🍀 Chance</span>
+      </div>
+      <p style="color:var(--muted); font-size:15px; max-width:560px; line-height:1.8;">
+        Un mélange parfait de stratégie, bluff et bonne humeur.
+        Chaque partie est unique et inoubliable !
+      </p>
+    </div>
+  </section>
+
+  <!-- CAPTURES D'ÉCRAN -->
+  <div class="screenshots-section" id="captures">
+    <div class="screenshots-header fade-up">
+      <p class="section-label" aria-hidden="true">Captures d'écran</p>
+      <h2>L'app en<br>action</h2>
+    </div>
+    <div class="screenshots-scroll"
+         role="region"
+         aria-label="Galerie de captures d'écran de l'application"
+         tabindex="0">
+      <!-- Ajouter autant de captures que souhaité -->
+      <!-- Exemple avec placeholders (remplacer src par les vraies captures) -->
+      <div class="screenshot-item">
+        <img src="assets/screenshots/screen1.jpg"
+             alt="Écran d'accueil de l'application Qui dit mieux ?"
+             onerror="this.outerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Accueil</span></div>'" />
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshots/screen2.jpg"
+             alt="Écran des règles du jeu"
+             onerror="this.outerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>💰</span><span>Enchère</span></div>'" />
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshots/screen3.jpg"
+             alt="Écran de sélection du défi"
+             onerror="this.outerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>🎯</span><span>Défi</span></div>'" />
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshots/screen4.jpg"
+             alt="Écran du résultat du défi"
+             onerror="this.outerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>🏆</span><span>Résultat</span></div>'" />
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshots/screen5.jpg"
+             alt="Écran des scores et classement"
+             onerror="this.outerHTML='<div class=\'screenshot-placeholder\'><span class=\'ph-icon\'>📊</span><span>Scores</span></div>'" />
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL RÈGLES -->
+  <section class="carousel-section" id="regles" aria-labelledby="titre-regles">
+    <p class="section-label" aria-hidden="true">Comment jouer</p>
+    <h2 id="titre-regles">Les règles<br>du jeu</h2>
+
+    <div class="carousel-wrap" role="region" aria-label="Carrousel des règles du jeu" aria-roledescription="carrousel">
+      <div class="carousel-track-outer">
+        <div class="carousel-track" id="carouselTrack" aria-live="polite">
+          <div class="carousel-slide" role="group" aria-roledescription="diapositive" aria-label="Règle 1 sur 5">
+            <img src="assets/rules/rule1.png" alt="Règle 1 : mise en place du jeu"
+                 onerror="this.outerHTML='<div class=\'rule-placeholder\'><span style=\'font-size:48px\'>📖</span><span>Règle 1</span></div>'" />
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="diapositive" aria-label="Règle 2 sur 5">
+            <img src="assets/rules/rule2.png" alt="Règle 2 : déroulement d'un tour"
+                 onerror="this.outerHTML='<div class=\'rule-placeholder\'><span style=\'font-size:48px\'>🔄</span><span>Règle 2</span></div>'" />
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="diapositive" aria-label="Règle 3 sur 5">
+            <img src="assets/rules/rule3.png" alt="Règle 3 : système d'enchères"
+                 onerror="this.outerHTML='<div class=\'rule-placeholder\'><span style=\'font-size:48px\'>💰</span><span>Règle 3</span></div>'" />
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="diapositive" aria-label="Règle 4 sur 5">
+            <img src="assets/rules/rule4.png" alt="Règle 4 : comptage des points"
+                 onerror="this.outerHTML='<div class=\'rule-placeholder\'><span style=\'font-size:48px\'>🏆</span><span>Règle 4</span></div>'" />
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="diapositive" aria-label="Règle 5 sur 5">
+            <img src="assets/rules/rule5.png" alt="Règle 5 : fin de partie et vainqueur"
+                 onerror="this.outerHTML='<div class=\'rule-placeholder\'><span style=\'font-size:48px\'>🎉</span><span>Règle 5</span></div>'" />
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-btn prev" id="carouselPrev"
+              aria-label="Règle précédente" onclick="moveCarousel(-1)">‹</button>
+      <button class="carousel-btn next" id="carouselNext"
+              aria-label="Règle suivante" onclick="moveCarousel(1)">›</button>
+
+      <div class="carousel-dots" role="tablist" aria-label="Navigation des règles" id="carouselDots">
+        <button class="dot active" role="tab" aria-selected="true"  aria-label="Règle 1" onclick="goToSlide(0)"></button>
+        <button class="dot"        role="tab" aria-selected="false" aria-label="Règle 2" onclick="goToSlide(1)"></button>
+        <button class="dot"        role="tab" aria-selected="false" aria-label="Règle 3" onclick="goToSlide(2)"></button>
+        <button class="dot"        role="tab" aria-selected="false" aria-label="Règle 4" onclick="goToSlide(3)"></button>
+        <button class="dot"        role="tab" aria-selected="false" aria-label="Règle 5" onclick="goToSlide(4)"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES DE JEU -->
+  <section id="modes" aria-labelledby="titre-modes" style="padding:100px 40px; max-width:1100px; margin:0 auto;">
+    <p class="section-label" aria-hidden="true">Flexibilité</p>
+    <h2 id="titre-modes">🕹️ Modes<br>de jeu</h2>
+    <div class="modes-grid" role="list">
+      <div class="mode-card fade-up" role="listitem">
+        <span class="mode-num" aria-hidden="true">01</span>
+        <div class="mode-icon" aria-hidden="true">⚡</div>
+        <h3>Partie rapide</h3>
+        <p>Lance un défi instantanément, sans scores ni configuration. Parfait pour briser la glace !</p>
+      </div>
+      <div class="mode-card fade-up" role="listitem" style="transition-delay:.1s">
+        <span class="mode-num" aria-hidden="true">02</span>
+        <div class="mode-icon" aria-hidden="true">👥</div>
+        <h3>Avec joueurs</h3>
+        <p>Ajoute tes amis, compte les points et détermine le grand vainqueur de la soirée !</p>
+      </div>
+      <div class="mode-card fade-up" role="listitem" style="transition-delay:.2s">
+        <span class="mode-num" aria-hidden="true">03</span>
+        <div class="mode-icon" aria-hidden="true">✏️</div>
+        <h3>Défis perso</h3>
+        <p>Crée tes propres défis pour rendre chaque partie unique et adaptée à ton groupe !</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section aria-labelledby="titre-features" style="padding:0 40px 100px; max-width:1100px; margin:0 auto;">
+    <p class="section-label" aria-hidden="true">Tout inclus</p>
+    <h2 id="titre-features">✨ Fonctionnalités</h2>
+    <div class="features-grid" role="list">
+      <div class="feature-item fade-up" role="listitem">
+        <div class="feature-icon" aria-hidden="true">🎯</div>
+        <div>
+          <h3>Défis variés</h3>
+          <p>Force, réflexes, culture et chance pour ne jamais s'ennuyer</p>
+        </div>
+      </div>
+      <div class="feature-item fade-up" role="listitem" style="transition-delay:.05s">
+        <div class="feature-icon" aria-hidden="true">💰</div>
+        <div>
+          <h3>Système d'enchères</h3>
+          <p>Simple, fun et propice au bluff entre amis</p>
+        </div>
+      </div>
+      <div class="feature-item fade-up" role="listitem" style="transition-delay:.1s">
+        <div class="feature-icon" aria-hidden="true">📊</div>
+        <div>
+          <h3>Scores automatiques</h3>
+          <p>Gestion des points intégrée, concentrez-vous sur le fun</p>
+        </div>
+      </div>
+      <div class="feature-item fade-up" role="listitem" style="transition-delay:.15s">
+        <div class="feature-icon" aria-hidden="true">✏️</div>
+        <div>
+          <h3>Défis personnalisés</h3>
+          <p>Créez vos propres défis pour chaque occasion</p>
+        </div>
+      </div>
+      <div class="feature-item fade-up" role="listitem" style="transition-delay:.2s">
+        <div class="feature-icon" aria-hidden="true">📡</div>
+        <div>
+          <h3>Fonctionne hors ligne</h3>
+          <p>Pas besoin de connexion, jouez partout</p>
+        </div>
+      </div>
+      <div class="feature-item fade-up" role="listitem" style="transition-delay:.25s">
+        <div class="feature-icon" aria-hidden="true">🎉</div>
+        <div>
+          <h3>Idéal en groupe</h3>
+          <p>Soirées, anniversaires, apéros, team building…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section aria-labelledby="titre-audience" style="padding:0 40px 100px; max-width:1100px; margin:0 auto;">
+    <p class="section-label" aria-hidden="true">Pour tout le monde</p>
+    <h2 id="titre-audience">👥 Pour qui ?</h2>
+    <ul class="audience-list">
+      <li class="audience-item">👫 Groupes d'amis</li>
+      <li class="audience-item">👨‍👩‍👧‍👦 Familles</li>
+      <li class="audience-item">🎓 Soirées étudiantes</li>
+      <li class="audience-item">💼 Team building</li>
+      <li class="audience-item">🥂 Apéros et anniversaires</li>
+      <li class="audience-item">🎮 Fans de jeux d'ambiance</li>
+    </ul>
+    <p style="color:var(--muted); font-size:16px; line-height:1.8; max-width:580px;">
+      Parce que chaque partie est différente ! Bluffez, tentez l'impossible,
+      surprenez vos amis… ou regardez-les échouer avec le sourire.
+      <strong style="color:var(--text);">Qui dit mieux ?</strong> transforme n'importe quel moment en défi mémorable.
+    </p>
+  </section>
+
+  <!-- CTA DOWNLOAD -->
+  <section class="cta-section" aria-labelledby="titre-cta">
+    <div class="cta-box">
+      <p class="section-label" style="justify-content:center" aria-hidden="true">Disponible maintenant</p>
+      <h2 id="titre-cta">Prêts à<br><span style="color:var(--primary)">jouer ?</span></h2>
+      <p>Téléchargez gratuitement sur Google Play<br>et transformez votre prochaine soirée !</p>
+      <a href="https://play.google.com/store/apps/details?id=com.edetlau.qui_dit_mieux"
+         class="playstore-btn"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Télécharger Qui dit mieux ? sur Google Play (nouvelle fenêtre)">
+        <!-- Option 1 : image badge officiel Play Store -->
+        <img src="assets/google-play-badge.png"
+             alt="Disponible sur Google Play"
+             onerror="this.outerHTML='<span class=\'playstore-badge\'><span class=\'playstore-icon\' aria-hidden=\'true\'>▶</span><span class=\'playstore-text-wrap\'><span class=\'playstore-sub\'>Disponible sur</span><span class=\'playstore-name\'>Google Play</span></span></span>'" />
+      </a>
+    </div>
+  </section>
+
+  <!-- RÉSEAUX SOCIAUX -->
+  <section class="socials-section" aria-labelledby="titre-socials">
+    <h2 id="titre-socials" class="visually-hidden">Retrouvez-nous sur les réseaux</h2>
+    <p class="socials-title">Suivez l'aventure</p>
+    <ul class="socials-list" role="list">
+      <!-- Remplacer les href par vos vrais liens -->
+      <li>
+        <a href="https://www.instagram.com/VOTRE_COMPTE/"
+           class="social-link"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram de Qui dit mieux ? (nouvelle fenêtre)">
+          <img src="assets/socials/instagram.png" alt="" aria-hidden="true" class="social-icon"
+               onerror="this.outerHTML='<span class=\'social-icon\' aria-hidden=\'true\'>📸</span>'" />
+          Instagram
+        </a>
+      </li>
+      <li>
+        <a href="https://www.tiktok.com/@VOTRE_COMPTE"
+           class="social-link"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="TikTok de Qui dit mieux ? (nouvelle fenêtre)">
+          <img src="assets/socials/tiktok.png" alt="" aria-hidden="true" class="social-icon"
+               onerror="this.outerHTML='<span class=\'social-icon\' aria-hidden=\'true\'>🎵</span>'" />
+          TikTok
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/VOTRE_PAGE"
+           class="social-link"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook de Qui dit mieux ? (nouvelle fenêtre)">
+          <img src="assets/socials/facebook.png" alt="" aria-hidden="true" class="social-icon"
+               onerror="this.outerHTML='<span class=\'social-icon\' aria-hidden=\'true\'>👥</span>'" />
+          Facebook
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/@VOTRE_CHAINE"
+           class="social-link"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="YouTube de Qui dit mieux ? (nouvelle fenêtre)">
+          <img src="assets/socials/youtube.png" alt="" aria-hidden="true" class="social-icon"
+               onerror="this.outerHTML='<span class=\'social-icon\' aria-hidden=\'true\'>▶️</span>'" />
+          YouTube
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONFIDENTIALITÉ -->
+  <div class="privacy-section">
+    <a href="https://sites.google.com/view/quiditmieux-privacypolicy/accueil" class="privacy-link">
+      Politique de confidentialité
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>© 2026 Qui dit mieux ? — Tous droits réservés</p>
+    <p>
+      <a href="https://sites.google.com/view/quiditmieux-privacypolicy/accueil">Politique de confidentialité</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:a.lallemant59@gmail.com">Contact</a>
+    </p>
+  </footer>
+
+</div><!-- /.wrapper -->
+
+<style>
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+
+<script>
+  // ── Carousel règles ──
+  let current = 0;
+  const total = 5;
+
+  function updateCarousel() {
+    const track = document.getElementById('carouselTrack');
+    track.style.transform = `translateX(-${current * 100}%)`;
+    const dots = document.querySelectorAll('#carouselDots .dot');
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+    document.getElementById('carouselPrev').disabled = current === 0;
+    document.getElementById('carouselNext').disabled = current === total - 1;
+    // Annonce AT
+    const slides = document.querySelectorAll('.carousel-slide');
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', i !== current ? 'true' : 'false'));
+  }
+
+  function moveCarousel(dir) {
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    updateCarousel();
+  }
+
+  function goToSlide(n) {
+    current = n;
+    updateCarousel();
+  }
+
+  // Navigation clavier dans le carousel
+  document.querySelector('.carousel-wrap').addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); moveCarousel(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); moveCarousel(1);  }
+  });
+
+  // Autoplay toutes les 5s (s'arrête au survol)
+  let autoplay = setInterval(() => {
+    if (current < total - 1) moveCarousel(1);
+    else { current = 0; updateCarousel(); }
+  }, 5000);
+
+  document.querySelector('.carousel-wrap').addEventListener('mouseenter', () => clearInterval(autoplay));
+  document.querySelector('.carousel-wrap').addEventListener('focusin',    () => clearInterval(autoplay));
+
+  updateCarousel();
+
+  // ── Scroll animations ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Respect prefers-reduced-motion ──
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+    clearInterval(autoplay);
+  }
+</script>
+</body>
+</html>
